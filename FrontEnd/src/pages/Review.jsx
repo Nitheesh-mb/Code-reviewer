@@ -28,7 +28,7 @@ const Review = () => {
       );
 
       if (res.data.success) {
-        setReview(res.data.review.review);
+        setReview(res.data.review);
       } else {
         setError(res.data.message || "Review failed");
       }
