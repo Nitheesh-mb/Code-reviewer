@@ -22,7 +22,7 @@ const Review = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:5000/api/ai/review",
+        "https://code-reviewer-c437.onrender.com/api/ai/review",
         { code, language },
         { headers: { Authorization: `Bearer ${token}` } }
       );
