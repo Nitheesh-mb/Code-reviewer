@@ -4,6 +4,7 @@ import Review from "../models/review.model.js";
 export const reviewCode = async (req, res) => {
   try {
     const { code, language } = req.body;
+
     if (!code) {
       return res.status(400).json({
         success: false,
@@ -17,16 +18,16 @@ export const reviewCode = async (req, res) => {
       code,
       language: language || "javascript",
       review,
-      userId: req.user.id,
     });
 
     res.status(200).json({
       success: true,
       review: savedReview,
     });
+
   } catch (error) {
     console.error("Controller Error:", error.message);
-    
+
     if (error.message.includes("429")) {
       return res.status(429).json({
         success: false,
@@ -43,13 +44,15 @@ export const reviewCode = async (req, res) => {
 
 export const getReviewHistory = async (req, res) => {
   try {
-    const reviews = await Review.find({ userId: req.user.id }).sort({
+    const reviews = await Review.find().sort({
       createdAt: -1,
     });
+
     res.status(200).json({
       success: true,
       reviews,
     });
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -11,12 +11,7 @@ const reviewSchema = new mongoose.Schema(
       default: "javascript",
     },
     review: {
-      type: Object, // Stores the JSON output from AI
-      required: true,
-    },
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      type: Object,
       required: true,
     },
   },
