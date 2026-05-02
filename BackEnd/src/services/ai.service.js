@@ -6,7 +6,7 @@ dotenv.config();
 export const generateReview = async (code, language) => {
   try {
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_KEY);
-    
+
     const model = genAI.getGenerativeModel({
       model: "gemini-3-flash-preview",
     });
@@ -34,7 +34,7 @@ ${code}
 `;
 
     console.log(`Requesting review for ${language}...`);
-    
+
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const rawText = response.text();
@@ -47,11 +47,11 @@ ${code}
       parsed = JSON.parse(clean);
     } catch (error) {
       console.error("JSON Parse Error:", rawText);
-      parsed = { 
-        bugs: "Could not parse AI response", 
-        improvements: "See raw output", 
-        bestPractices: "See raw output", 
-        refactoredCode: rawText 
+      parsed = {
+        bugs: "Could not parse AI response",
+        improvements: "See raw output",
+        bestPractices: "See raw output",
+        refactoredCode: rawText
       };
     }
 

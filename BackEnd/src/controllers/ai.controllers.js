@@ -4,7 +4,8 @@ import Review from "../models/review.model.js";
 export const reviewCode = async (req, res) => {
   try {
     const { code, language } = req.body;
-
+    console.log("HEADERS:", req.headers.authorization);
+    console.log("USER:", req.user);
     if (!code) {
       return res.status(400).json({
         success: false,
@@ -18,6 +19,7 @@ export const reviewCode = async (req, res) => {
       code,
       language: language || "javascript",
       review,
+      user: req.user._id 
     });
 
     res.status(200).json({
