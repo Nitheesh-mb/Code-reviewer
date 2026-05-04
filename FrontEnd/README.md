@@ -10,7 +10,7 @@ A full-stack MERN application for performing automated code reviews and tracking
 - Modern Responsive Dashboard
 
 ## Tech Stack
-- **Frontend**: React, Tailwind CSS, Lucide Icons
+- **Frontend**: React, Tailwind CSS, 
 - **Backend**: Node.js, Express, MongoDB
 - **AI Integration**: Google Generative AI
 
